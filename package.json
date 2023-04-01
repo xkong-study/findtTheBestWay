@@ -21,18 +21,23 @@
   "dependencies": {
     "@headlessui/react": "^1.7.13",
     "@heroicons/react": "^2.0.16",
+    "@iconscout/react-unicons": "^2.0.2",
     "@react-google-maps/api": "^2.18.1",
     "@reduxjs/toolkit": "^1.9.3",
     "@vitejs/plugin-basic-ssl": "^1.0.1",
+    "antd": "^5.3.3",
     "antd-mobile": "^5.28.1",
     "antd-mobile-icons": "^0.3.0",
     "gapi-script": "^1.2.0",
+    "ionicons": "^7.1.0",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
-    "react-swipeable": "^7.0.0"
+    "react-swipeable": "^7.0.0",
+    "vant": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",

@@ -1,12 +1,14 @@
 import React, { useState, useRef } from "react";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { Divider } from 'antd-mobile'
+import {CapsuleTabs, Divider} from 'antd-mobile'
 import { useSwipeable } from "react-swipeable";
 import { classNames } from "../utils/utils";
 import ListContainer from "../components/ListContainer";
 import {ChevronLeftIcon} from "@heroicons/react/20/solid";
 import {useNavigate} from "react-router-dom";
-
+import {RootState} from "../store";
+import {useSelector} from "react-redux";
+import Work_Home from "../components/work_home_card";
 enum SlidePanelState {
     Open,
     Midway,
@@ -43,6 +45,9 @@ export default function Page3() {
             setSlidePanelState(SlidePanelState.Midway),
     });
 
+    const savePlace = useSelector((state:RootState)=>state.user.save)
+    const PlaceClassification = useSelector((state:RootState)=>state.user.classification)
+    console.log(savePlace,PlaceClassification)
     const refPassthrough = (el: HTMLDivElement) => {
         handlers.ref(el);
         panelRef.current = el;
@@ -83,23 +88,23 @@ export default function Page3() {
                 )}
                 ref={refPassthrough}
             >
-                <div className="flex flex-row justify-center">
+                <div className="flex flex-row flex-start">
                     <ChevronLeftIcon className="h-10 w-8" aria-hidden="true" onClick={()=>navigate(-1)}/>
-                    <div className="ml-10 mt-6 text-xl"><p>work</p></div>
-                <div className="w-0.5 h-16 bg-black rounded mx-auto -mt-0 -mb-4"></div>
-                    <div className="mr-20 mt-6 text-xl"><p>home</p></div>
-                </div>
-                <div className="px-4">
-                    <div className="w-full space-y-1">
-                        <div className="flex flex-col -mt-2">
-              <span className="inline-flex space-x-2 items-baseline my-2">
-              </span>
-                        </div>
-                        <Divider className="border-1 border-black mt-0.5"></Divider>
-                        <ListContainer/>
-                    </div>
+                  <CapsuleTabs className="ml-5">
+                    <CapsuleTabs.Tab title='work' key='work'>
+                      {PlaceClassification=='work'?
+                        <Work_Home props={savePlace}/>:null
+                      }
+                    </CapsuleTabs.Tab>
+                    <CapsuleTabs.Tab title='home' key='home'>
+                      {PlaceClassification=='home'?
+                        <Work_Home props={savePlace}/>:null
+                      }
+                    </CapsuleTabs.Tab>
+                  </CapsuleTabs>
                 </div>
             </div>
+
         </div>
     );
 }

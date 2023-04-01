@@ -58,6 +58,9 @@ export default function Login() {
 
   const onSuccess = (res) => {
     if(res.profileObj.tokenId!=""){
+      localStorage.setItem("imageUrl",res.profileObj.imageUrl)
+      localStorage.setItem("givenName",res.profileObj.givenName)
+      localStorage.setItem("familyName",res.profileObj.familyName)
       navigate('/home')
     }
     console.log('success:', res);

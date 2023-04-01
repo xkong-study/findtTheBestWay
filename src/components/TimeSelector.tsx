@@ -3,7 +3,7 @@ import { PickerView,Button } from 'antd-mobile'
 import { CapsuleTabs } from 'antd-mobile'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from "../store";
-import {incrementByAmount, incrementByHidden} from "../store/reducer";
+import { incrementByAmount } from "../store/reducer";
 
 export const basicColumns = [
   [

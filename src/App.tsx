@@ -9,8 +9,9 @@ import Page4 from "./pages/page4";
 import store from './store/index';
 import { Provider } from 'react-redux';
 import ScrollToTop from "./ScrollToTop";
-import { GoogleLogin } from 'react-google-login';
+import GoogleMap from './pages/GoogleMap';
 import { gapi } from 'gapi-script';
+import PersonalCenter from "./pages/personalCenter";
 
 export default function App() {
     return (
@@ -22,6 +23,8 @@ export default function App() {
               <Route path="/Page2" element={<Page2/>} />
               <Route path="/Page3" element={<Page3/>} />
               <Route path="/Page4" element={<Page4/>} />
+              <Route path="/GoogleMap" element={<GoogleMap/>} />
+              <Route path="/personalCenter" element={<PersonalCenter/>} />
               <Route index path="/" element={<Login/>} />
               <Route index path="/register" element={<Register/>} />
           </Routes>

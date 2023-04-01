@@ -18,12 +18,12 @@ import {
 } from 'antd-mobile-icons'
 
 const location = [
-    {id: 1, name: 'Hamiltion Building'},
-    {id: 2, name: '1937'},
-    {id: 3, name: 'Phenix Building'},
-    {id: 4, name: 'Dorset Point'},
-    {id: 5, name: 'Widow Street'},
-    {id: 6, name: 'Cindy House'},
+    {id: 1, name: 'Trinity College, 学院绿地 Dublin 2, 爱尔兰'},
+    {id: 2, name: 'Hamilton Building, Westland Row, Dublin 2, 爱尔兰'},
+    {id: 3, name: 'Dorset Street Upper, 都柏林爱尔兰'},
+    {id: 4, name: 'Phoenix Park, Dublin 8, 爱尔兰'},
+    {id: 5, name: 'Dublin Airport (DUB), 都柏林爱尔兰'},
+    {id: 6, name: 'Dublin Zoo, Saint James\' (part of Phoenix Park), Dublin 8, 爱尔兰'},
 ]
 
 const tabs = [

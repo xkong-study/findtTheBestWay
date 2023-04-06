@@ -3,7 +3,6 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import {CapsuleTabs, Divider} from 'antd-mobile'
 import { useSwipeable } from "react-swipeable";
 import { classNames } from "../utils/utils";
-import ListContainer from "../components/ListContainer";
 import {ChevronLeftIcon} from "@heroicons/react/20/solid";
 import {useNavigate} from "react-router-dom";
 import {RootState} from "../store";
@@ -27,7 +26,7 @@ const slidePanelStateToTranslate = (state: SlidePanelState) => {
 export default function Page3() {
     const { isLoaded } = useJsApiLoader({
         id: 'd07532df77f9d9a5',
-        googleMapsApiKey: 'AIzaSyBxhljI-42-8Sn2UOAVf3Cw_9lH4otQ6vY',
+        googleMapsApiKey: 'AIzaSyBnkc7Kgh9u8ctUta_eHExYGyAyRSqfXzg',
         libraries: ['geometry', 'drawing'],
     });
     const navigate = useNavigate()

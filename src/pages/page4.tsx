@@ -157,6 +157,7 @@ export default function SearchPlace(props) {
   const busNumber = []
   const arriveTime = []
   BusStop.map((item) => {
+    console.log(item)
     const route = item;
     const leg = route.legs[0];
     const duration = item.legs[0].duration.text;
@@ -182,7 +183,7 @@ export default function SearchPlace(props) {
   }
   // ------------- required google places setting -----------
   const {isLoaded, loadError} = useLoadScript({
-    googleMapsApiKey: 'AIzaSyBxhljI-42-8Sn2UOAVf3Cw_9lH4otQ6vY',
+    googleMapsApiKey: 'AIzaSyBnkc7Kgh9u8ctUta_eHExYGyAyRSqfXzg',
     libraries,
   });
 
@@ -388,7 +389,7 @@ export default function SearchPlace(props) {
             origin={origin}
             destination={destination}
             style={{width: "100vw"}}
-          /> : null
+          />:null
       }
 
       {

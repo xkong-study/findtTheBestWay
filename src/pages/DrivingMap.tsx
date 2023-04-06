@@ -67,7 +67,7 @@ function MapDriving(props) {
               options={{
                 origin,
                 destination,
-                travelMode: 'DRIVING'
+                travelMode: 'DRIVING',
               }}
               callback={directionsCallback}
             />

@@ -29,6 +29,7 @@
     "antd-mobile": "^5.28.1",
     "antd-mobile-icons": "^0.3.0",
     "gapi-script": "^1.2.0",
+    "google-maps-react": "^2.0.6",
     "ionicons": "^7.1.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",

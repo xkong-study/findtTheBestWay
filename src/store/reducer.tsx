@@ -12,7 +12,8 @@ interface CounterState { // 定义初始化状态的类型
   StopName:string,
   BusStop:any,
   save:string,
-  classification:string
+  classification:string,
+  route:object
 }
 const initialState: CounterState = { // 初始化状态
   value: 'hidden',
@@ -26,7 +27,8 @@ const initialState: CounterState = { // 初始化状态
   StopName:"",
   BusStop:[],
   save:"",
-  classification:""
+  classification:"",
+  route:null
 }
 
 export const counterSlice = createSlice({
@@ -68,9 +70,12 @@ export const counterSlice = createSlice({
     },
     PlaceClassification:(state,action:PayloadAction<string>)=>{
       state.classification = action.payload
+    },
+    Route:(state,action:PayloadAction<string>)=>{
+      state.route = action.payload
     }
   }
 })
 
-export const { incrementByAmount, incrementByHidden,Walking,Bicycling,Driving,Bus,Short_name,Arrive_Time,StopName,BusStop,SavePlace,PlaceClassification } = counterSlice.actions // 导出操作state的喊出
+export const { incrementByAmount, incrementByHidden,Walking,Bicycling,Driving,Bus,Short_name,Arrive_Time,StopName,BusStop,SavePlace,PlaceClassification,Route } = counterSlice.actions // 导出操作state的喊出
 export default counterSlice.reducer // 导出当前reducer在store/index.ts中记性全局挂载（这种也可以不用挂载到全局）

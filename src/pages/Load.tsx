@@ -69,7 +69,7 @@ function MapWalking(props) {
               options={{
                 origin,
                 destination,
-                travelMode: 'WALKING'
+                travelMode: 'WALKING',
               }}
               callback={directionsCallback}
             />

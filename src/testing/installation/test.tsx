@@ -1,28 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import Page2 from "../../pages/page2";
 import MyCombobox from "../../pages/page5";
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { SparklesIcon } from "@heroicons/react/24/solid";
-import { useSwipeable } from "react-swipeable";
-import { classNames } from "../utils/utils";
-import Divider from "../components/Divider";
-import {ChevronLeftIcon} from "@heroicons/react/20/solid";
-import { useNavigate } from "react-router-dom";
-import {Combobox, Transition} from '@headlessui/react'
-import { Badge, TabBar } from 'antd-mobile'
-import {
-  MapIcon,
-  MapPinIcon,
-  ChevronLeftIcon,
-  MagnifyingGlassIcon,
-  ClockIcon,
-  XMarkIcon
-} from '@heroicons/react/20/solid'
-import {BiBus,AiOutlineSave,BiMap,FiCornerUpRight} from "react-icons/all"
-import {GoogleMap, useJsApiLoader} from "@react-google-maps/api";
-import {useLocation, useNavigate} from 'react-router-dom';
+
 
 describe('Favourites', () => {
 

@@ -1,7 +1,8 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { GoogleMap, DirectionsRenderer, DirectionsService } from '@react-google-maps/api';
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import {Arrive_Time, Bus, BusStop, Short_name, StopName} from "../store/reducer";
+import {RootState} from "../store";
 
 const libraries = ['places']
 const containerStyle = {
@@ -28,16 +29,12 @@ function MapBus(props) {
     mapRef.current = map;
   }, []);
   const dispatch = useDispatch()
+
+  const Route = useSelector((state: RootState) => state.user.BusStop)
+  console.log(Route)
+
   const directionsCallback = (googleResponse) => {
     if (googleResponse) {
-      if(response) {
-        if (googleResponse.status === 'OK' && googleResponse.routes.overview_polyline !== response.routes.overview_polyline) {
-          setResponse(() => googleResponse)
-        } else {
-          console.log('response: ', googleResponse)
-        }
-      } else {
-        if (googleResponse.status === 'OK') {
           setResponse(() => googleResponse)
           dispatch((BusStop(googleResponse.routes)))
           const route = googleResponse.routes[0];
@@ -60,8 +57,6 @@ function MapBus(props) {
         } else {
           console.log('response: ', googleResponse)
         }
-      }
-    }
   }
 
   return (

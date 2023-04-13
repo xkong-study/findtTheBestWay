@@ -58,12 +58,11 @@ export default function Page2() {
     lng: -6.31718
   };
   const options = {
-    // 将 `language` 属性添加到 `options` 对象中
     ...{
       zoomControl: true,
       streetViewControl: false,
     },
-    language: "en-GB" // 设置地图的语言为中文
+    language: "en-GB"
   };
 
   return (

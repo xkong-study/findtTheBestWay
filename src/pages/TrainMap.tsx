@@ -1,4 +1,4 @@
-import React, {useState, useRef, useCallback, useMemo} from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { GoogleMap, DirectionsRenderer, DirectionsService } from '@react-google-maps/api';
 import Card from "../components/Card"
 
@@ -8,7 +8,7 @@ const containerStyle = {
   height: '60vh'
 };
 
-function MapBus(props) {
+function MapTrain(props) {
   const { origin, destination } = props;
   const [response, setResponse] = useState(null);
 
@@ -39,23 +39,16 @@ function MapBus(props) {
     Way: [],
     CostTime:[],
   });
-
-  const updateData = useMemo(() => {
-    return (newData) => {
-      setData(prevData => {
-        return {
-          ...prevData,
-          ...newData
-        }
-      });
-    }
-  }, []);
-
+  const updateData = (newData) => {
+    setData({
+      ...data,
+      ...newData
+    });
+  }
   function directionsCallback(response, status) {
     if (status === 'OK') {
       setResponse(response);
       const routes = response.routes;
-      console.log()
       for(let i=0;i<routes.length;i++){
         const steps = routes[i].legs
         for(let i=0;i<steps.length;i++){
@@ -83,7 +76,7 @@ function MapBus(props) {
         CostTime : Cos
       });
     } else {
-      console.log('cannot get tram info:', status);
+      console.log('cannot get train info:', status);
     }
   }
 
@@ -113,6 +106,10 @@ function MapBus(props) {
                 origin,
                 destination,
                 travelMode: 'TRANSIT',
+                transitOptions: {
+                  modes: ['RAIL'],
+                  routingPreference: 'FEWER_TRANSFERS'
+                },
                 provideRouteAlternatives: true
               }}
               callback={directionsCallback}
@@ -133,4 +130,4 @@ function MapBus(props) {
 }
 
 
-export default MapBus;
+export default MapTrain;

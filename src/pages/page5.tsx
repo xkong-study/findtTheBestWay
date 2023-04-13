@@ -71,8 +71,8 @@ export default function MyCombobox() {
     if(typeof selected=="object"){
         navigate('/Page4', {
             state: {
-                id: `${selected.id}`,
-                name: `${selected.name}`,
+                id: `${selected!.id}`,
+                name: `${selected!.name}`,
             }
         });
     }

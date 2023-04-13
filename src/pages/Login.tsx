@@ -3,58 +3,25 @@ import {useNavigate} from "react-router-dom";
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
 
-export default function Login() {
-  const navigate = useNavigate()
-  const [form, setForm] = useState({name: '', password: ''})
 
-  const handleChange = useCallback((val: any, name: any) => {
-    setForm(preVal => ({...preVal, [name]: val}))
-    console.log(form)
-  }, [form])
-
-  const setCookie = (name: any, value: any, expiryDate: any) => {
-    const currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() + expiryDate);
-    document.cookie = name + '=' + value + '; expires=' + currentDate;
-  };
-
-  const getCookie = (name: any) => {
-    const arr = document.cookie.split('; ');
-    for (let i = 0; i < arr.length; i++) {
-      const arr2 = arr[i].split('=');
-      if (arr2[0] === name) {
-        return arr2[1];
-      }
-    }
-    return '';
-  };
-
-  const submit = () => {
-    if (form.password !== ('') && form.name !== ('')) {
-      setCookie('username', form.name, 1);
-      setCookie('password', form.password, 1);
-      console.log(form.name, form.password)
-      navigate('../home')
-    } else {
-      alert("userName and password cannot be none")
-    }
-  }
-  const [ profile, setProfile ] = useState([]);
+export async function initClient() {
   const clientId = '597741942610-qqm963rcm440o9i52sqevjauldifehgd.apps.googleusercontent.com'
   const API_KEY = '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'
   const SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
-
-  useEffect(() => {
-    const initClient = () => {
-      gapi.client.init({
-        clientId: clientId,
-        scope: SCOPES,
-        apiKey: API_KEY,
-        cookiepolicy: 'single_host_origin'
-      });
-    };
-    gapi.load('client:auth2', initClient);
+  await gapi.auth2.init({
+    clientId: clientId,
+    scope: SCOPES,
+    apiKey: API_KEY,
+    cookiepolicy: 'single_host_origin'
   });
+  console.log('ok')
+  await gapi.load('client:auth2', initClient)
+}
+
+export default function Login() {
+  const navigate = useNavigate()
+  const [ profile, setProfile ] = useState([]);
+  const clientId = '597741942610-qqm963rcm440o9i52sqevjauldifehgd.apps.googleusercontent.com'
 
   const onSuccess = (res) => {
     if(res.profileObj.tokenId!=""){
@@ -98,5 +65,4 @@ export default function Login() {
       </div>
     </div>
   )
-
 }
